@@ -134,3 +134,24 @@ Similar to the last permutation test, I have created a new column called 'missin
 ></iframe>
 
 Looking at my resulting p-value and histogram, I can see that my p-value is greater than my alpha (0.05) therefore, I fail to reject my null hypothesis. Thus, based on my test results, the the missingness of rating is not a result of MAR because rating does not depend on minutes. Thus the missingness is a result of MCAR.
+
+## Hypothesis Testing
+
+The salient question that I will be preforming an analysis on is: **Do recipes tagged as Mexican hold a higher rating on average compared to other recipes that are not labeled Mexican?**
+
+**Null Hypothesis:** There will be no significant difference between the average rating for recipes tagged as Mexican versus those that aren't. 
+
+**Alternative hypothesis:** There will be a significant difference between the average rating for recipes tagged as Mexican versus those that aren't. 
+
+For my salient question, I will proceed by utilizing a permutation test in which I will shuffle the 'is_mexican' column that I had made previously and test to see whether there is my data result from random chance or there is a signifcant difference.
+
+My alternative hypothesis is one-sided because it is common knowledge (and my own opinion) that Mexican food is one of the more well known and well liked cuisines world wide (source: me). Thus, with this prior knowledge in mind we should anticipate that Mexican food will be rated higher and therefore my alternative hypothesis reflects this.
+
+<iframe
+  src="assets/Hyp_Test.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Because avg_rating is numerical I used the difference in means as my test statistic with an alpha of 0.05. 
