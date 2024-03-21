@@ -23,7 +23,11 @@ The second column being added is called ‘is_mexican’ and is derived from the
 After cleaning the data this is what the final data frame looks like:
 
 ### Univariate
+
+
 ### Bivariate
+
+
 ### Interesting Aggregates
 
 As my interesting aggregates, I had wanted to see what the in means in calorie per amount of steps the recipes would be while looking at it in the scope of whether the recipes were tagged as being Mexican.
@@ -36,4 +40,34 @@ As my interesting aggregates, I had wanted to see what the in means in calorie p
 | 4       | 325.55 | 304.04 |
 | 5       | 342.13 | 335.52 |
 
-For instance, the very first cell in this histogram is telling us that that for the recipes that have one step and not tagged as Mexican have an average calorie count of 267.24. As overall, generally the calorie count in the foods that are not tagged as Mexican have a higher average than those that are tagged as being Mexican. Additionally, as we increase the number of steps the calorie mean typically increases.
+For instance, the very first cell in this pivot table is telling us that that for the recipes that have one step and not tagged as Mexican have an average calorie count of 267.24. As overall, generally the calorie count in the foods that are not tagged as Mexican have a higher average than those that are tagged as being Mexican. Additionally, as we increase the number of steps the calorie mean typically increases.
+
+## Assessment of Missingness:
+
+### NMAR Analysis
+
+In terms of NMAR, we can see that there are missing values (NaN values) in the review columns. We can likely conclude that there are missing values here because while the people were rating the food they might have not felt very strongly about a particular recipe that they tried out. So because these people did not feel a strong enough emotion to create a review they might have felt like they had nothing to say and thus they left no review.
+
+### Missingness Dependency
+
+Now we can look at the missingness of some of the data that might depend on other columns in the dataset. To help explain the missingness of a column I used permutation tests on specific columns to potentially help explain the missingness seen in the rating column.
+
+1. Rating and Sugar(PDV) (MAR)
+
+First I had wanted to see if the missingness of the rating column was attributed to the 'sugar(PVD)' column. Therefore, I conducted a permutation test with the following hypothesis:
+
+**Null Hypothesis:** The missingness of rating does not depend on the sugar's percentage of daily value. 
+
+**Alternative Hypothesis:** The missingness of rating does depend on the sugar's percentage of daily value. 
+
+Additionally, to help aid me in figuring out which test statistic to use I had plotted these two distributions together. However, the shapes of the plot was hard to see because of some of the larger outliers in the data set. For the sake of visualzation purposes, I had dropped 500 rows that had the highest sugar percentage of daily value, but the permutation test still utilizes all the data. Thus, no data was actually dropped from the test.
+
+**insert plot here**
+
+Based on how similar the shapes were I decided to use absolute difference in means as my test statistic. 
+
+For this permutation test I have created a new column in a copy of my original data frame called 'missing_ratings' that contains True if the rating is missing or false if the rating is not missing. Because in the beginning of cleaning this data, I had made all the nan values into zeros we can find the missing values by finding all the zeros in the ratings column. Thus,for my permutation test, I had shuffled the 'missing_rating' column 1000 times and computed the test statistic 1000 times.
+
+**insert plot here**
+
+Looking at my resulting p-value and histogram, I can see that my resulting p-value is less than my alpha (0.05) therefore, I reject my null hypothesis. Thus, based on my test results, the the missingness of rating is a result of MAR because it appears from the test that rating depends on sugar(PDV).
