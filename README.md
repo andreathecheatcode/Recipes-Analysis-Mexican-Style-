@@ -25,10 +25,15 @@ After cleaning the data this is what the final data frame looks like:
 ### Univariate
 ### Bivariate
 ### Interesting Aggregates
-| is_mexican, n_steps | False  | True   |
+
+As my interesting aggregates, I had wanted to see what the in means in calorie per amount of steps the recipes would be while looking at it in the scope of whether the recipes were tagged as being Mexican.
+
+| n_steps | False  | True   |
 |---------|--------|--------|
 | 1       | 267.24 | 182.10 |
 | 2       | 301.08 | 249.48 |
 | 3       | 288.73 | 200.46 |
 | 4       | 325.55 | 304.04 |
 | 5       | 342.13 | 335.52 |
+
+For instance, the very first cell in this histogram is telling us that that for the recipes that have one step and not tagged as Mexican have an average calorie count of 267.24. As overall, generally the calorie count in the foods that are not tagged as Mexican have a higher average than those that are tagged as being Mexican. Additionally, as we increase the number of steps the calorie mean typically increases.
