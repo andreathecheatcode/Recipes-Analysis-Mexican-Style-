@@ -85,12 +85,22 @@ First I had wanted to see if the missingness of the rating column was attributed
 
 Additionally, to help aid me in figuring out which test statistic to use I had plotted these two distributions together. However, the shapes of the plot was hard to see because of some of the larger outliers in the data set. For the sake of visualzation purposes, I had dropped 500 rows that had the highest sugar percentage of daily value, but the permutation test still utilizes all the data. Thus, no data was actually dropped from the test.
 
-**insert plot here**
+<iframe
+  src="assets/Sugar_Missing.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Based on how similar the shapes were I decided to use absolute difference in means as my test statistic. 
 
 For this permutation test I have created a new column in a copy of my original data frame called 'missing_ratings' that contains True if the rating is missing or false if the rating is not missing. Because in the beginning of cleaning this data, I had made all the nan values into zeros we can find the missing values by finding all the zeros in the ratings column. Thus,for my permutation test, I had shuffled the 'missing_rating' column 1000 times and computed the test statistic 1000 times.
 
-**insert plot here**
+<iframe
+  src="assets/Sugar_MAR.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Looking at my resulting p-value and histogram, I can see that my resulting p-value is less than my alpha (0.05) therefore, I reject my null hypothesis. Thus, based on my test results, the the missingness of rating is a result of MAR because it appears from the test that rating depends on sugar(PDV).
