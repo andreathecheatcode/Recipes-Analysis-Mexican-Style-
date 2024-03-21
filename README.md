@@ -24,9 +24,12 @@ After cleaning the data this is what the final data frame looks like:
 
 ### Univariate
 
+Looking at this univariate 
 
 ### Bivariate
+**insert graph here**
 
+For context, the top scatter plot contains only the recipes that are tagged as Mexican while the bottom includes all the points from the entire data set. Each scatter plot, indicates the average rating based on its respective number of ingredients. Furthermore, when looking at the top plot which indicates those recipes that are tagged as Mexican you can see that as the recipes recieve a high averge rating the more ingredients they use. Looking at the two bivariate graphs overall, one can see that they both follow very a similar distribution where the higher the rating the more ingredients they have. 
 
 ### Interesting Aggregates
 
