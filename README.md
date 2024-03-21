@@ -24,6 +24,13 @@ After cleaning the data this is what the final data frame looks like:
 
 ### Univariate
 
+<iframe
+  src="assets/Number_of_Steps_Recipes.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 Looking at this univariate 
 
 ### Bivariate
