@@ -77,7 +77,7 @@ Now we can look at the missingness of some of the data that might depend on othe
 
 1. Rating and Sugar(PDV) (MAR)
 
-First I had wanted to see if the missingness of the rating column was attributed to the 'sugar(PVD)' column. Therefore, I conducted a permutation test with the following hypothesis:
+First I had wanted to see if the missingness of the rating column was attributed to the 'sugar(PVD)' column. Therefore, I conducted a permutation test with the following hypotheses:
 
 **Null Hypothesis:** The missingness of rating does not depend on the sugar's percentage of daily value. 
 
@@ -104,3 +104,33 @@ For this permutation test I have created a new column in a copy of my original d
 ></iframe>
 
 Looking at my resulting p-value and histogram, I can see that my resulting p-value is less than my alpha (0.05) therefore, I reject my null hypothesis. Thus, based on my test results, the the missingness of rating is a result of MAR because it appears from the test that rating depends on sugar(PDV).
+
+
+
+2. Rating and Minutes (MCAR)
+
+Now I had wanted to see if the missingness of the rating column was attributed to the 'minutes' column. Therefore, I conducted a permutation test with the following hypotheses:
+
+**Null Hypothesis:** The missingness of rating does not depend on the minutes it takes to prepare the meal. 
+
+**Alternative hypothesis:** The missingness of rating does depend on the minutes it takes to prepare the meal. 
+
+Additionally, to help aid me in figuring out which test statistic to use I had plotted these two distributions together. However, once again the shapes of the plot was hard to see because of some of the larger outliers in the data set. For the sake of visualzation purposes, I had dropped 500 rows that had the highest amount of minutes, but the permutation test still utilizes all the data. Thus, no data was actually dropped for the test.
+
+<iframe
+  src="assets/Minutes_Missing.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Similar to the last permutation test, I have created a new column called 'missing_ratings' to indicate rating's missingness. Once again, because the minutes column contains numerical values, and because of the plot above displaying the similar shapes, I am able to use absolute mean differnce as mt test statistic for this permutation test.
+
+<iframe
+  src="assets/Minutes_MCAR.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Looking at my resulting p-value and histogram, I can see that my p-value is greater than my alpha (0.05) therefore, I fail to reject my null hypothesis. Thus, based on my test results, the the missingness of rating is not a result of MAR because rating does not depend on minutes. Thus the missingness is a result of MCAR.
