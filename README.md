@@ -108,7 +108,7 @@ For this permutation test I have created a new column in a copy of my original d
   height="600"
   frameborder="0"
 ></iframe>
-Looking at my resulting p-value and histogram, I can see that my resulting p-value is less than my alpha (0.05) therefore, I reject my null hypothesis. Thus, based on my test results, the the missingness of rating is a result of MAR because it appears from the test that rating depends on sugar(PDV).
+Looking at my resulting p-value and histogram, I can see that my resulting p-value is less than my alpha (0.05) therefore, I reject my null hypothesis. Thus, based on my test results, the the missingness of rating is a result of MAR because it appears from the test that `rating` depends on `sugar(PDV)`.
 
 2. Rating and Minutes (MCAR)
 
