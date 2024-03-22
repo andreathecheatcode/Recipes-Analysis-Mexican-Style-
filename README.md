@@ -177,4 +177,14 @@ Finally, I had decided to use RandomForestClassifier because I had seen from my 
 
  Although I utilized f1-score to improve my final model compared to my base model where I used RMSE, I can see a significant improvement in my model’s performance. For this improvement, I had looked at both of my model’s accuracy instead so that they would be on the same metric type of metric. There I saw a significantly higher accuracy on my final model (0.77 on testing data) than on my base model (0.0005247939955534964 on testing data). Therefore, I concluded that my final model performed better in comparison to the base model. 
 
+## Fairness Analysis
+
+For my fairness analysis, I wanted to see if the recipes with **lower average ratings** (0 to 2.5) were as correctly predicted as the recipes with a **higher average rating** (2.5 to 5). Therefore my hypotheses were as followed:
+
+**Null Hypothesis:** My model is fair. Its f1-score for predicting the ratings of recipes with lower average ratings (0 to 2.5 stars) will be roughly the same for predicting the ratings of recipes with higher average ratings (2.5 to 5 stars).
+
+
+**Alternative Hypothesis:** Our model is unfair. Its  f1-score for predicting ratings for the recipes with lower average rating (0 to 2.5 stars) is lower than its f1-score for predicting ratings with higher average ratings (2.5 to 5 stars). 
+
+To preform this permutation test I then did a test statistic of a difference in means utilizing an f1-score as my evaluation metric. For my alpha level I had done 0.05 and my p-value was 0.0. Therefore, I reject my null hypothesis and that my outcome is not likely out of random chance.
 
