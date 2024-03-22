@@ -155,3 +155,11 @@ My alternative hypothesis is one-sided because it is common knowledge (and my ow
 ></iframe>
 
 Because avg_rating is numerical I used the difference in means as my test statistic with an alpha of 0.05. 
+
+## Framing a Prediction Problem
+Now looking in terms of ratings, as we have mentioned and seen before there are many missing values in the ratings column. This might make it hard for one to determine whether they would like to make a certain recipe or not in the future. This is a tragedy that we must overcome. Think of all the tasty cuisines that many people will not have the chance to taste, the chance to have that authentic ratatouille experience (especially if it is a Mexican cuisine). Therefore For my prediction model I aim to be able to predict the rating of each recipe. 
+
+Initially, I had thought that it would be better to perform a regression model because realistically it is not impossible to have a rating between two and 3 stars. However, as you’ll see later on I realized that for this type of data it is better to utilize a multiclass classification model instead. The way that I am measuring these models is by using root mean square error for my base model. The reason why I chose this over the other suitable metrics is because then I would be able to tell how far apart on average all of my predictions were from the actual values. Thus, it gave me insight because the root mean square error was the same unit as the values that I am working with, so I can make judgements off of the comparisons. For my final model, I did end up utilizing the f1-score. Because my data is  unbalanced this means that I should not use accuracy and instead use f1-score which is more resilient from having an unbalanced classification.
+
+## Baseline Model
+
