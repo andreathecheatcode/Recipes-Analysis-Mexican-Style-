@@ -163,3 +163,9 @@ Initially, I had thought that it would be better to perform a regression model b
 
 ## Baseline Model
 
+For my baseline model, like I mentioned before, I unfortunately started off with Random Forest Regressor because my values are numerical and realistically it is possible to have ratings that could be continuous. So I tried to use a regressor as my baseline. Moving forward, for my baseline I had utilized the `n_ingredients` and `calorie(#)` columns. These two columns are qualitative and thus I had then binarized them at their respective means. I figured that these two columns would be some of the most relevant because the calorie column might explain why the higher ratings. For instance, if the meal was more fulfilling then maybe the calorie count was higher, making people give higher ratings. I had also done a number of ingredients because I noticed while I was doing my EDA that the higher the rating was that there were also more recipes with more ingredients.
+
+Additionally, I had hot encoded my `is_mexican` column, which is nominal data. I thought that knowing the ethnicity of the food might help with predicting the rating. As we had seen in my hypothesis test, the dishes labeled as Mexican were likely rated higher not due to chance.Therefore, I applied this new found knowledge to my baseline. 
+
+Finally, looking at the rmse which is 1.7858108334251612, I think my model is not doing so fire. I do not think it is doing good because the rmse value is so large for the ratings to be 1 to 5 stars. More specifically, it means on average my predictions with the model are almost 2 stars off. Therefore, I have concluded that this model was not the way to go.
+
