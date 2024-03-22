@@ -6,20 +6,19 @@ This is a project analysis from DSC 80 at UCSD
 
   Have you ever been in a situation where your friends were pretentious enough to claim that a certain ethnic food was superior? Have you or a loved one ever been subjected to the situation when deciding where to go out and eat and one person chooses an ethnic food that you are in fact not in the mood to eat. WELL, you’ve come to the right place. With new foods constantly being made it might be hard and stressful to decide what to eat, so this project aims to help you make those tough decisions depending on the ethnicity of the cuisine. This brings me to the current question, How does the ethnicity of the food affect the rating of the recipe? However, for now, we will only look at a small lens of this question. Specifically we will be asking if: **Mexican cuisine holds a higher rating on average compared to food not labeled as Mexican cuisine?**
 
-  Before getting our hands dirty (not from the tacos), I will be using a data set from food.com that contains recipes and reviews dating from 2008 onwards. The recipes data frame contains 83782 rows which represents a unique recipe for every row. This data set also contains 12 columns total however the relevant ones that I mainly emphasize are the tags, nutritional value, the number of ingredients, and number of steps columns. I also used another data frame which contained some of the reviews some people had left on certain recipes. This review data frame contained 731927 rows which did not contain unique recipes but unique reviews that people had left along with their rating of the food. As you will see in my analysis I ended up utilizing the rating column along with the review column. 
+  Before getting our hands dirty (not from the tacos), I will be using a data set from food.com that contains recipes and reviews dating from 2008 onwards. The recipes data frame contains 83782 rows which represents a unique recipe for every row. This data set also contains 12 columns total however the relevant ones that I mainly emphasize are the `tags` (tags that the recipe is labeled as), `nutrition` (nutritional value of the recipe which contains calories, total fat, sugar, sodium, protein, saturated fat, carbohydrates), `n_ingredients` (the number of ingredients), and `n_steps` (number of steps) columns. I also used another data frame which contained a column called `review` for reviews some people had left on certain recipes. This review data frame contained 731927 rows which did not contain unique recipes but unique reviews that people had left along with their rating of the food in a column called `rating`. As you will see in my analysis I ended up utilizing the rating column along with the review column. 
 
 ## Data Cleaning and Exploratory Data Analysis:
 
-In terms of cleaning the data, I approached cleaning the data first by noticing the types of each value in the two dataframes. From this observation, I noticed that the nutrition column was consider a string object that looked like a l
-ist containing 'calories(#)', 'total fat(PDV)', 'sugar(PDV)', 'sodium(PDV)', 'protein(PDV)', 'saturated fat(PDV)', 'carbohydrates(PDV)' specifically in this order. Therefore, I had turned all the values in that column into an actual list and then appended each column into their own respective columns with their proper labels.
+In terms of cleaning the data, I approached cleaning the data first by noticing the types of each value in the two dataframes. From this observation, I noticed that the nutrition column was consider a string object that looked like a list containing `calories(#)`, `total fat(PDV)`, `sugar(PDV)`, `sodium(PDV)`, `protein(PDV)`, `saturated fat(PDV)`, and `carbohydrates(PDV)` specifically in this order. Therefore, I had turned all the values in that column into an actual list and then appended each column into their own respective columns with their proper labels.
 
 Next, I wanted to match the recipes with their respective reviews. Thus, I had merged the recipes and reviews data sets together.
 
-After merging, I noticed that there was a significant amount of NaNs in the ratings column. To further clean the data I had then filled all the NaNs in the rating column with 0. I had specifically changed them to 0 because they would still indicate a NaN value. For instance, in terms of ratings it is not possible to give a rating of 0, the lowest rating that one can get is a 1.
+After merging, I noticed that there was a significant amount of NaNs in the `rating` column. To further clean the data I had then filled all the NaNs in the rating column with 0. I had specifically changed them to 0 because they would still indicate a NaN value. For instance, in terms of ratings it is not possible to give a rating of 0, the lowest rating that one can get is a 1.
 
 Finally, I added two new columns to the final data frame:
-The first new column being added is called ‘avg_rating’ which is the average rating from all the reviews for a specific recipe. 
-The second column being added is called ‘is_mexican’ and is derived from the ‘tags’ column. In this analysis, recipes tagged with ‘mexican’ are then considered a mexican dish. As a results, the True values indicates that a recipe has a ‘mexican’ tag and those that have False values did not tag this dish as ‘mexican’
+The first new column being added is called `avg_rating` which is the average rating from all the reviews for a specific recipe. 
+The second column being added is called `is_mexican` and is derived from the ‘tags’ column. In this analysis, recipes tagged with ‘mexican’ are then considered a mexican dish. As a results, the True values indicates that a recipe has a ‘mexican’ tag and those that have False values did not tag this dish as ‘mexican’.
 After cleaning the data this is what the final data frame looks like:
 
 | name                                 |   minutes | tags                                                                                                                                                                                                                        |   n_steps |   n_ingredients |   calorie(#) |   sugar(PVD) |   rating | review                                                                                                                                                                                                                                                                                                                                           |   avg_rating | is_mexican   |
@@ -40,7 +39,6 @@ After cleaning the data this is what the final data frame looks like:
   height="600"
   frameborder="0"
 ></iframe>
-
 Looking at this univariate plot, it displays the amount of recipes that utilize a certain amount of steps. Therefore, we can see a lot of the recipes consist of using around 7 steps total.  
 
 ### Bivariate
@@ -58,7 +56,6 @@ Looking at this univariate plot, it displays the amount of recipes that utilize 
   height="600"
   frameborder="0"
 ></iframe>
-
 For context, the top scatter plot contains only the recipes that are tagged as Mexican while the bottom includes all the points from the entire data set. Each scatter plot, indicates the average rating based on its respective number of ingredients. Furthermore, when looking at the top plot which indicates those recipes that are tagged as Mexican you can see that as the recipes recieve a high averge rating the more ingredients they use. Looking at the two bivariate graphs overall, one can see that they both follow very a similar distribution where the higher the rating the more ingredients they have. 
 
 ### Interesting Aggregates
@@ -79,7 +76,7 @@ For instance, the very first cell in this pivot table is telling us that that fo
 
 ### NMAR Analysis
 
-In terms of NMAR, we can see that there are missing values (NaN values) in the review columns. We can likely conclude that there are missing values here because while the people were rating the food they might have not felt very strongly about a particular recipe that they tried out. So because these people did not feel a strong enough emotion to create a review they might have felt like they had nothing to say and thus they left no review.
+In terms of NMAR, we can see that there are missing values (NaN values) in the `review` column. We can likely conclude that there are missing values here because while the people were rating the food they might have not felt very strongly about a particular recipe that they tried out. So because these people did not feel a strong enough emotion to create a review they might have felt like they had nothing to say and thus they left no review.
 
 ### Missingness Dependency
 
@@ -87,7 +84,7 @@ Now we can look at the missingness of some of the data that might depend on othe
 
 1. Rating and Sugar(PDV) (MAR)
 
-First I had wanted to see if the missingness of the rating column was attributed to the 'sugar(PVD)' column. Therefore, I conducted a permutation test with the following hypotheses:
+First I had wanted to see if the missingness of the `rating` column was attributed to the `sugar(PVD)` column. Therefore, I conducted a permutation test with the following hypotheses:
 
 **Null Hypothesis:** The missingness of rating does not depend on the sugar's percentage of daily value. 
 
@@ -101,7 +98,6 @@ Additionally, to help aid me in figuring out which test statistic to use I had p
   height="600"
   frameborder="0"
 ></iframe>
-
 Based on how similar the shapes were I decided to use absolute difference in means as my test statistic. 
 
 For this permutation test I have created a new column in a copy of my original data frame called 'missing_ratings' that contains True if the rating is missing or false if the rating is not missing. Because in the beginning of cleaning this data, I had made all the nan values into zeros we can find the missing values by finding all the zeros in the ratings column. Thus,for my permutation test, I had shuffled the 'missing_rating' column 1000 times and computed the test statistic 1000 times.
@@ -112,14 +108,11 @@ For this permutation test I have created a new column in a copy of my original d
   height="600"
   frameborder="0"
 ></iframe>
-
 Looking at my resulting p-value and histogram, I can see that my resulting p-value is less than my alpha (0.05) therefore, I reject my null hypothesis. Thus, based on my test results, the the missingness of rating is a result of MAR because it appears from the test that rating depends on sugar(PDV).
-
-
 
 2. Rating and Minutes (MCAR)
 
-Now I had wanted to see if the missingness of the rating column was attributed to the 'minutes' column. Therefore, I conducted a permutation test with the following hypotheses:
+Now I had wanted to see if the missingness of the rating column was attributed to the `minutes` column. Therefore, I conducted a permutation test with the following hypotheses:
 
 **Null Hypothesis:** The missingness of rating does not depend on the minutes it takes to prepare the meal. 
 
@@ -134,7 +127,7 @@ Additionally, to help aid me in figuring out which test statistic to use I had p
   frameborder="0"
 ></iframe>
 
-Similar to the last permutation test, I have created a new column called 'missing_ratings' to indicate rating's missingness. Once again, because the minutes column contains numerical values, and because of the plot above displaying the similar shapes, I am able to use absolute mean differnce as mt test statistic for this permutation test.
+Similar to the last permutation test, I have created a new column called `missing_ratings` to indicate rating's missingness. Once again, because the minutes column contains numerical values, and because of the plot above displaying the similar shapes, I am able to use absolute mean differnce as mt test statistic for this permutation test.
 
 <iframe
   src="assets/Minutes_MCAR.html"
@@ -153,7 +146,7 @@ The salient question that I will be preforming an analysis on is: **Do recipes t
 
 **Alternative hypothesis:** There will be a significant difference between the average rating for recipes tagged as Mexican versus those that aren't. 
 
-For my salient question, I will proceed by utilizing a permutation test in which I will shuffle the 'is_mexican' column that I had made previously and test to see whether there is my data result from random chance or there is a signifcant difference.
+For my salient question, I will proceed by utilizing a permutation test in which I will shuffle the `is_mexican` column that I had made previously and test to see whether there is my data result from random chance or there is a signifcant difference.
 
 My alternative hypothesis is one-sided because it is common knowledge (and my own opinion) that Mexican food is one of the more well known and well liked cuisines world wide (source: me). Thus, with this prior knowledge in mind we should anticipate that Mexican food will be rated higher and therefore my alternative hypothesis reflects this.
 
@@ -169,7 +162,7 @@ Because avg_rating is numerical I used the difference in means as my test statis
 ## Framing a Prediction Problem
 Now looking in terms of ratings, as we have mentioned and seen before there are many missing values in the ratings column. This might make it hard for one to determine whether they would like to make a certain recipe or not in the future. This is a tragedy that we must overcome. Think of all the tasty cuisines that many people will not have the chance to taste, the chance to have that authentic ratatouille experience (especially if it is a Mexican cuisine). Therefore For my prediction model I aim to be able to predict the rating of each recipe. 
 
-Initially, I had thought that it would be better to perform a regression model because realistically it is not impossible to have a rating between two and 3 stars. However, as you’ll see later on I realized that for this type of data it is better to utilize a multiclass classification model instead. The way that I am measuring these models is by using root mean square error for my base model. The reason why I chose this over the other suitable metrics is because then I would be able to tell how far apart on average all of my predictions were from the actual values. Thus, it gave me insight because the root mean square error was the same unit as the values that I am working with, so I can make judgements off of the comparisons. For my final model, I did end up utilizing the f1-score. Because my data is  unbalanced this means that I should not use accuracy and instead use f1-score which is more resilient from having an unbalanced classification.
+Initially, I had thought that it would be better to perform a regression model because realistically it is not impossible to have a rating between two and 3 stars. However, as you’ll see later on I realized that for this type of data it is better to utilize a multi-classification model instead. The way that I am measuring these models is by using root mean square error for my base model. The reason why I chose this over the other suitable metrics is because then I would be able to tell how far apart on average all of my predictions were from the actual values. Thus, it gave me insight because the root mean square error was the same unit as the values that I am working with, so I can make judgements off of the comparisons. For my final model, I did end up utilizing the f1-score. Because my data is  unbalanced this means that I should not use accuracy and instead use f1-score which is more resilient from having an unbalanced classification.
 
 ## Baseline Model
 
